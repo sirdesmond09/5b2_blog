@@ -42,7 +42,7 @@ if environment == "development":
     
 elif environment == "production":
     
-    DEBUG = True
+    DEBUG = False
     ALLOWED_HOSTS = ['blog-5b2-cohort.herokuapp.com']
     DATABASES = {}
     DATABASES['default'] =  dj_database_url.config()
