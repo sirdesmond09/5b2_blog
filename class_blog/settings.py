@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv, find_dotenv
+import dj_database_url
 
 load_dotenv(find_dotenv())
 
@@ -32,11 +33,19 @@ if environment == "development":
     
     DEBUG = True
     ALLOWED_HOSTS = []
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
     
 elif environment == "production":
     
     DEBUG = True
     ALLOWED_HOSTS = ['blog-5b2-cohort.herokuapp.com']
+    
+    DATABASES['default'] =  dj_database_url.config()
 
 
 # Application definition
@@ -88,12 +97,7 @@ WSGI_APPLICATION = 'class_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
