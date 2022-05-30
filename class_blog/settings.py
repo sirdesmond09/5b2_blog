@@ -35,7 +35,7 @@ if environment == "development":
     
 elif environment == "production":
     
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ['blog-5b2-cohort.herokuapp.com']
 
 
